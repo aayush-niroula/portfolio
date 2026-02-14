@@ -97,7 +97,7 @@ export interface AuthResponse {
 }
 
 // API Slice
-const baseUrl = import.meta.env.VITE_API_URL || '/api';
+const baseUrl = import.meta.env.VITE_API_URL || '';
 
 export const api = createApi({
   reducerPath: 'api',

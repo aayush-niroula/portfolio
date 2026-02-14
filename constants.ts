@@ -2,9 +2,9 @@
 import { Project, TimelineItem, SkillCategory } from './types';
 
 // API Configuration - Change this URL in one place for deployment
-// For local development: 'http://localhost:5000'
-// For production: your deployed backend URL
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// For local development: 'http://localhost:5000/api'
+// For production: your deployed backend URL with /api suffix
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
