@@ -1,0 +1,39 @@
+services:
+  # Backend API Service
+  - name: portfolio-backend
+    type: web
+    region: oregon
+    buildCommand: npm run build && npx prisma generate
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: SUPERADMIN_EMAIL
+        value: admin@portfolio.com
+      - key: SUPERADMIN_PASSWORD
+        value: admin123
+      - key: FRONTEND_URL
+        # Replace with your actual frontend URL after deployment
+        value: https://your-portfolio.onrender.com
+    # Mount the uploads directory
+    disk:
+      name: uploads
+      mountPath: /app/backend/uploads
+      sizeGB: 1
+
+  # Frontend Static Site
+  - name: portfolio-frontend
+    type: static
+    region: oregon
+    buildCommand: npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_URL
+        # Replace with your backend URL after deployment
+        value: https://portfolio-backend.onrender.com
